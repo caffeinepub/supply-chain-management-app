@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Purchase requisition system with approval workflow",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-react-query-hooks-in-usequeries-ts-for-purchase-requisition-operations-usegetpurchaserequisitions-with-status-filter-usecreatepurchaserequisition-useupdatepurchaserequisition-usedeletepurchaserequisition-usesubmitforapproval-useapprovepurchaserequisition-and-userejectpurchaserequisition-with-appropriate-success-error-toast-notifications",
+      "title": "Create React Query hooks in useQueries.ts for purchase requisition operations: useGetPurchaseRequisitions (with status filter), useCreatePurchaseRequisition, useUpdatePurchaseRequisition, useDeletePurchaseRequisition, useSubmitForApproval, useApprovePurchaseRequisition, and useRejectPurchaseRequisition with appropriate success/error toast notifications",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-createpurchaserequisitionform-component-using-react-hook-form-with-fields-for-department-items-with-dynamic-add-remove-rows-for-item-description-quantity-and-estimated-cost-justification-textarea-and-auto-calculated-total-estimated-cost-include-validation-for-required-fields-and-numeric-inputs",
+      "title": "Create a CreatePurchaseRequisitionForm component using React Hook Form with fields for department, items (with dynamic add/remove rows for item description, quantity, and estimated cost), justification textarea, and auto-calculated total estimated cost. Include validation for required fields and numeric inputs",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-purchaserequisitiontable-component-that-displays-purchase-requisitions-filtered-by-status-draft-pendingapproval-approved-rejected-with-columns-for-id-requested-by-department-total-estimated-cost-status-badge-created-date-and-action-buttons-edit-for-draft-status-view-details-for-all-statuses-delete-for-draft-status",
+      "title": "Create a PurchaseRequisitionTable component that displays purchase requisitions filtered by status (Draft, PendingApproval, Approved, Rejected) with columns for ID, requested by, department, total estimated cost, status badge, created date, and action buttons (Edit for Draft status, View Details for all statuses, Delete for Draft status)",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-purchaserequisitionapproval-component-that-displays-the-full-requisition-details-with-line-items-breakdown-shows-approval-history-timeline-and-includes-action-buttons-for-submit-for-approval-draft-status-only-approve-with-optional-comments-pendingapproval-status-only-and-reject-with-required-reason-pendingapproval-status-only",
+      "title": "Create a PurchaseRequisitionApproval component that displays the full requisition details with line items breakdown, shows approval history timeline, and includes action buttons for Submit for Approval (Draft status only), Approve with optional comments (PendingApproval status only), and Reject with required reason (PendingApproval status only)",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-purchaserequisitions-page-component-at-route-purchase-requisitions-that-combines-the-purchaserequisitiontable-with-a-dialog-based-createpurchaserequisitionform-following-the-pattern-of-the-vendormanagement-page",
+      "title": "Create a PurchaseRequisitions page component at route /purchase-requisitions that combines the PurchaseRequisitionTable with a dialog-based CreatePurchaseRequisitionForm, following the pattern of the VendorManagement page",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-purchase-requisitions-navigation-link-to-the-navigation-component-with-a-filetext-icon-positioned-between-vendors-and-quotation-requests",
+      "title": "Add a Purchase Requisitions navigation link to the Navigation component with a FileText icon, positioned between Vendors and Quotation Requests",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-register-the-purchase-requisitions-route-in-app-tsx-router-configuration-with-the-purchaserequisitions-page-component",
+      "title": "Register the /purchase-requisitions route in App.tsx router configuration with the PurchaseRequisitions page component",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Purchase requisition screen",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Purchase approval flow",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Create a PurchaseRequisition type in the backend with fields: id (Text), requestedBy (Text), department (Text), items (Array of item descriptions with quantity and estimated cost), totalEstimatedCost (Float), justification (Text), status (variant: Draft, PendingApproval, Approved, Rejected), createdAt (Int), updatedAt (Int), and approvalHistory (Array of approval records with approver name, action, timestamp, and comments)",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Implement CRUD operations for purchase requisitions in the backend: createPurchaseRequisition, getPurchaseRequisitions (with optional status filter), getPurchaseRequisitionById, updatePurchaseRequisition, and deletePurchaseRequisition following the same patterns used for vendors and quotations",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add backend methods for approval workflow: submitForApproval (changes status from Draft to PendingApproval), approvePurchaseRequisition (changes status to Approved and records approver details), and rejectPurchaseRequisition (changes status to Rejected and records rejection reason)",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Supply Chain Manager",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

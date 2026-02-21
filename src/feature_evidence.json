@@ -1,0 +1,132 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-react-query-hooks-in-usequeries-ts-for-purchase-requisition-operations-usegetpurchaserequisitions-with-status-filter-usecreatepurchaserequisition-useupdatepurchaserequisition-usedeletepurchaserequisition-usesubmitforapproval-useapprovepurchaserequisition-and-userejectpurchaserequisition-with-appropriate-success-error-toast-notifications",
+      "featureTitle": "Create React Query hooks in useQueries.ts for purchase requisition operations: useGetPurchaseRequisitions (with status filter), useCreatePurchaseRequisition, useUpdatePurchaseRequisition, useDeletePurchaseRequisition, useSubmitForApproval, useApprovePurchaseRequisition, and useRejectPurchaseRequisition with appropriate success/error toast notifications",
+      "files": [
+        "frontend/src/hooks/useQueries.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-createpurchaserequisitionform-component-using-react-hook-form-with-fields-for-department-items-with-dynamic-add-remove-rows-for-item-description-quantity-and-estimated-cost-justification-textarea-and-auto-calculated-total-estimated-cost-include-validation-for-required-fields-and-numeric-inputs",
+      "featureTitle": "Create a CreatePurchaseRequisitionForm component using React Hook Form with fields for department, items (with dynamic add/remove rows for item description, quantity, and estimated cost), justification textarea, and auto-calculated total estimated cost. Include validation for required fields and numeric inputs",
+      "files": [
+        "frontend/src/components/CreatePurchaseRequisitionForm.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-purchaserequisitiontable-component-that-displays-purchase-requisitions-filtered-by-status-draft-pendingapproval-approved-rejected-with-columns-for-id-requested-by-department-total-estimated-cost-status-badge-created-date-and-action-buttons-edit-for-draft-status-view-details-for-all-statuses-delete-for-draft-status",
+      "featureTitle": "Create a PurchaseRequisitionTable component that displays purchase requisitions filtered by status (Draft, PendingApproval, Approved, Rejected) with columns for ID, requested by, department, total estimated cost, status badge, created date, and action buttons (Edit for Draft status, View Details for all statuses, Delete for Draft status)",
+      "files": [
+        "frontend/src/components/EditPurchaseRequisitionForm.tsx",
+        "frontend/src/components/PurchaseRequisitionTable.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-purchaserequisitionapproval-component-that-displays-the-full-requisition-details-with-line-items-breakdown-shows-approval-history-timeline-and-includes-action-buttons-for-submit-for-approval-draft-status-only-approve-with-optional-comments-pendingapproval-status-only-and-reject-with-required-reason-pendingapproval-status-only",
+      "featureTitle": "Create a PurchaseRequisitionApproval component that displays the full requisition details with line items breakdown, shows approval history timeline, and includes action buttons for Submit for Approval (Draft status only), Approve with optional comments (PendingApproval status only), and Reject with required reason (PendingApproval status only)",
+      "files": [
+        "frontend/src/components/PurchaseRequisitionApproval.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-purchaserequisitions-page-component-at-route-purchase-requisitions-that-combines-the-purchaserequisitiontable-with-a-dialog-based-createpurchaserequisitionform-following-the-pattern-of-the-vendormanagement-page",
+      "featureTitle": "Create a PurchaseRequisitions page component at route /purchase-requisitions that combines the PurchaseRequisitionTable with a dialog-based CreatePurchaseRequisitionForm, following the pattern of the VendorManagement page",
+      "files": [
+        "frontend/src/pages/PurchaseRequisitions.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-purchase-requisitions-navigation-link-to-the-navigation-component-with-a-filetext-icon-positioned-between-vendors-and-quotation-requests",
+      "featureTitle": "Add a Purchase Requisitions navigation link to the Navigation component with a FileText icon, positioned between Vendors and Quotation Requests",
+      "files": [
+        "frontend/src/components/Navigation.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-register-the-purchase-requisitions-route-in-app-tsx-router-configuration-with-the-purchaserequisitions-page-component",
+      "featureTitle": "Register the /purchase-requisitions route in App.tsx router configuration with the PurchaseRequisitions page component",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

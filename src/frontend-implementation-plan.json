@@ -1,0 +1,126 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add purchase requisition screen and approval flow",
+  "requirements": [
+    {
+      "id": "REQ-4",
+      "summary": "Create React Query hooks for purchase requisition operations with toast notifications",
+      "acceptanceCriteria": [
+        "All hooks follow the existing query hook patterns",
+        "Cache invalidation works correctly after mutations",
+        "Success and error messages are displayed via toast"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add React Query hooks for purchase requisition operations: useGetPurchaseRequisitions (with optional status filter), useCreatePurchaseRequisition, useUpdatePurchaseRequisition, useDeletePurchaseRequisition, useSubmitForApproval, useApprovePurchaseRequisition, and useRejectPurchaseRequisition. Follow the existing patterns used for vendors and quotations with appropriate success/error toast notifications and cache invalidation using queryClient.invalidateQueries for the 'purchaseRequisitions' query key."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Create purchase requisition form component with dynamic line items and auto-calculated total",
+      "acceptanceCriteria": [
+        "Form allows adding and removing multiple line items",
+        "Total estimated cost is calculated automatically",
+        "Validation prevents submission of incomplete data",
+        "Form follows the styling patterns of existing forms"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CreatePurchaseRequisitionForm.tsx",
+          "operation": "create",
+          "description": "Create a form component using React Hook Form with fields for requestedBy (text input), department (text input), items (dynamic array with add/remove buttons, each item has description text input, quantity number input, estimatedCost number input), justification (textarea), and a read-only display for auto-calculated totalEstimatedCost. Include validation for required fields (requestedBy, department, at least one item with all fields filled) and numeric inputs (quantity must be positive integer, estimatedCost must be positive number). Use the useCreatePurchaseRequisition hook from useQueries.ts. Follow the styling patterns from AddVendorForm.tsx and CreateRequestForm.tsx using shadcn/ui components (Form, FormField, FormItem, FormLabel, FormControl, FormMessage, Input, Textarea, Button). Calculate totalEstimatedCost by summing all item estimatedCosts using useWatch or form state."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Create purchase requisition table component with status filtering and conditional actions",
+      "acceptanceCriteria": [
+        "Table displays all relevant requisition information",
+        "Status badges use appropriate colors matching existing patterns",
+        "Action buttons are conditionally shown based on status",
+        "Table follows the layout patterns of VendorTable and QuotationRequestTable"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PurchaseRequisitionTable.tsx",
+          "operation": "create",
+          "description": "Create a table component that accepts a status filter prop (draft, pendingApproval, approved, rejected, or null for all) and displays purchase requisitions using useGetPurchaseRequisitions hook. Show columns for ID, requestedBy, department, totalEstimatedCost (formatted as currency), status badge, and createdAt (formatted date). Include action buttons: Edit button (visible only for draft status, opens edit dialog), View Details button (visible for all statuses, navigates to details view), Delete button (visible only for draft status, shows confirmation dialog). Use status badge styling that matches QuotationRequestTable patterns with earth-tone colors: draft (yellow/amber), pendingApproval (blue), approved (green), rejected (red). Follow the table layout patterns from VendorTable.tsx and QuotationRequestTable.tsx using shadcn/ui Table components. Include EditPurchaseRequisitionDialog and DeleteConfirmationDialog components similar to VendorTable patterns."
+        },
+        {
+          "path": "frontend/src/components/EditPurchaseRequisitionForm.tsx",
+          "operation": "create",
+          "description": "Create an edit form component similar to CreatePurchaseRequisitionForm but pre-populated with existing requisition data. Accept a requisition object as prop. Use useUpdatePurchaseRequisition hook. Only allow editing items array, totalEstimatedCost (auto-calculated), and justification fields (requestedBy and department should be read-only). Include the same dynamic line items functionality and validation as the create form. Follow patterns from EditVendorForm.tsx."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Create purchase requisition approval component with action buttons and approval history timeline",
+      "acceptanceCriteria": [
+        "All requisition details are clearly displayed",
+        "Approval history shows chronological timeline of actions",
+        "Action buttons are conditionally shown based on status",
+        "Rejection requires a reason before submission"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PurchaseRequisitionApproval.tsx",
+          "operation": "create",
+          "description": "Create a component that displays full purchase requisition details including header section (ID, requestedBy, department, createdAt, updatedAt), line items breakdown table (description, quantity, estimatedCost per item with row totals), totalEstimatedCost summary, justification text, current status badge, and approval history timeline (showing approverName, action, timestamp, comments for each record in chronological order). Include conditional action buttons based on status: Submit for Approval button (visible only when status is draft, calls useSubmitForApproval), Approve button with optional comments input field (visible only when status is pendingApproval, calls useApprovePurchaseRequisition with approverName and comments), Reject button with required reason textarea (visible only when status is pendingApproval, calls useRejectPurchaseRequisition with approverName and comments). Use shadcn/ui components for layout (Card, CardHeader, CardContent, Table for items, Button, Textarea, Dialog for approval/rejection forms). Follow earth-tone styling patterns."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Create purchase requisitions page with table and dialog-based create form",
+      "acceptanceCriteria": [
+        "Page is accessible via the defined route",
+        "Dialog opens and closes correctly for creating requisitions",
+        "Table updates automatically after creating a new requisition"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/PurchaseRequisitions.tsx",
+          "operation": "create",
+          "description": "Create a page component that combines PurchaseRequisitionTable with a dialog-based CreatePurchaseRequisitionForm. Include a header with title 'Purchase Requisitions' and 'Create Requisition' button that opens a Dialog containing CreatePurchaseRequisitionForm. Include status filter tabs or dropdown (All, Draft, Pending Approval, Approved, Rejected) that updates the status prop passed to PurchaseRequisitionTable. Follow the exact pattern from VendorManagement.tsx using shadcn/ui Dialog component. The table should automatically update after successful requisition creation due to React Query cache invalidation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Add Purchase Requisitions navigation link between Vendors and Quotation Requests",
+      "acceptanceCriteria": [
+        "Navigation item appears in the correct position",
+        "Active state highlighting works correctly",
+        "Icon and label are clearly visible"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Navigation.tsx",
+          "operation": "modify",
+          "description": "Add a new navigation link for Purchase Requisitions with FileText icon from lucide-react, positioned between the Vendors link and Quotation Requests link. Use the same Link component from @tanstack/react-router with to='/purchase-requisitions' and activeProps for active state styling. Follow the existing navigation item patterns with consistent spacing, icon sizing, and earth-tone color scheme. The label should be 'Purchase Requisitions'."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Register purchase requisitions route in router configuration",
+      "acceptanceCriteria": [
+        "Route is properly registered in the router",
+        "Navigation to the route works correctly"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add a new Route for '/purchase-requisitions' path in the TanStack Router configuration. Import and use the PurchaseRequisitions page component. Follow the existing route registration patterns used for vendor-management, quotation-requests, and other routes. Ensure the route is wrapped with the Layout component like other routes."
+        }
+      ]
+    }
+  ]
+}

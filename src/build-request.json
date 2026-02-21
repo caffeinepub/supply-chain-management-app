@@ -1,0 +1,189 @@
+{
+  "kind": "build_request",
+  "title": "Add purchase requisition screen and approval flow",
+  "projectName": "Supply Chain Manager",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a PurchaseRequisition type in the backend with fields: id (Text), requestedBy (Text), department (Text), items (Array of item descriptions with quantity and estimated cost), totalEstimatedCost (Float), justification (Text), status (variant: Draft, PendingApproval, Approved, Rejected), createdAt (Int), updatedAt (Int), and approvalHistory (Array of approval records with approver name, action, timestamp, and comments)",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Generate a purchase requisition screen and approval flow for purchase"
+        ]
+      },
+      "acceptanceCriteria": [
+        "PurchaseRequisition type is defined with all specified fields",
+        "Status variant includes Draft, PendingApproval, Approved, and Rejected states",
+        "Approval history tracks all approval actions with timestamps"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement CRUD operations for purchase requisitions in the backend: createPurchaseRequisition, getPurchaseRequisitions (with optional status filter), getPurchaseRequisitionById, updatePurchaseRequisition, and deletePurchaseRequisition following the same patterns used for vendors and quotations",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All CRUD operations are implemented and functional",
+        "Status filtering works correctly",
+        "ID generation uses timestamp-based approach consistent with existing code"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add backend methods for approval workflow: submitForApproval (changes status from Draft to PendingApproval), approvePurchaseRequisition (changes status to Approved and records approver details), and rejectPurchaseRequisition (changes status to Rejected and records rejection reason)",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "approval flow for purchase"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Status transitions are enforced correctly (Draft→PendingApproval, PendingApproval→Approved/Rejected)",
+        "Approval history is updated with each action",
+        "Rejection reasons are captured and stored"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Create React Query hooks in useQueries.ts for purchase requisition operations: useGetPurchaseRequisitions (with status filter), useCreatePurchaseRequisition, useUpdatePurchaseRequisition, useDeletePurchaseRequisition, useSubmitForApproval, useApprovePurchaseRequisition, and useRejectPurchaseRequisition with appropriate success/error toast notifications",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All hooks follow the existing query hook patterns",
+        "Cache invalidation works correctly after mutations",
+        "Success and error messages are displayed via toast"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Create a CreatePurchaseRequisitionForm component using React Hook Form with fields for department, items (with dynamic add/remove rows for item description, quantity, and estimated cost), justification textarea, and auto-calculated total estimated cost. Include validation for required fields and numeric inputs",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Generate a purchase requisition screen"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Form allows adding and removing multiple line items",
+        "Total estimated cost is calculated automatically",
+        "Validation prevents submission of incomplete data",
+        "Form follows the styling patterns of existing forms"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Create a PurchaseRequisitionTable component that displays purchase requisitions filtered by status (Draft, PendingApproval, Approved, Rejected) with columns for ID, requested by, department, total estimated cost, status badge, created date, and action buttons (Edit for Draft status, View Details for all statuses, Delete for Draft status)",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Table displays all relevant requisition information",
+        "Status badges use appropriate colors matching existing patterns",
+        "Action buttons are conditionally shown based on status",
+        "Table follows the layout patterns of VendorTable and QuotationRequestTable"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Create a PurchaseRequisitionApproval component that displays the full requisition details with line items breakdown, shows approval history timeline, and includes action buttons for Submit for Approval (Draft status only), Approve with optional comments (PendingApproval status only), and Reject with required reason (PendingApproval status only)",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "approval flow for purchase"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All requisition details are clearly displayed",
+        "Approval history shows chronological timeline of actions",
+        "Action buttons are conditionally shown based on status",
+        "Rejection requires a reason before submission"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Create a PurchaseRequisitions page component at route /purchase-requisitions that combines the PurchaseRequisitionTable with a dialog-based CreatePurchaseRequisitionForm, following the pattern of the VendorManagement page",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Page is accessible via the defined route",
+        "Dialog opens and closes correctly for creating requisitions",
+        "Table updates automatically after creating a new requisition"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Add a Purchase Requisitions navigation link to the Navigation component with a FileText icon, positioned between Vendors and Quotation Requests",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Navigation item appears in the correct position",
+        "Active state highlighting works correctly",
+        "Icon and label are clearly visible"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Register the /purchase-requisitions route in App.tsx router configuration with the PurchaseRequisitions page component",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Route is properly registered in the router",
+        "Navigation to the route works correctly"
+      ]
+    }
+  ],
+  "constraints": [
+    "Follow the single-actor architecture pattern used in backend/main.mo",
+    "Use the existing earth-tone color palette and styling patterns",
+    "Maintain consistency with existing form validation and error handling patterns",
+    "Follow the status badge styling conventions used in QuotationRequestTable and VendorTable"
+  ],
+  "nonGoals": [
+    "Multi-level approval hierarchies or approval routing logic",
+    "Email notifications for approval actions",
+    "Budget tracking or spending limits",
+    "Integration with accounting systems",
+    "Document attachment capabilities"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

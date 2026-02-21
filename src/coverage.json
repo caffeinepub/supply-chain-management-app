@@ -1,0 +1,140 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-21T06:21:58.847Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 10,
+    "implemented": 7,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Create a PurchaseRequisition type in the backend with fields: id (Text), requestedBy (Text), department (Text), items (Array of item descriptions with quantity and estimated cost), totalEstimatedCost (Float), justification (Text), status (variant: Draft, PendingApproval, Approved, Rejected), createdAt (Int), updatedAt (Int), and approvalHistory (Array of approval records with approver name, action, timestamp, and comments)",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-10",
+        "summary": "Register the /purchase-requisitions route in App.tsx router configuration with the PurchaseRequisitions page component",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Implement CRUD operations for purchase requisitions in the backend: createPurchaseRequisition, getPurchaseRequisitions (with optional status filter), getPurchaseRequisitionById, updatePurchaseRequisition, and deletePurchaseRequisition following the same patterns used for vendors and quotations",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Add backend methods for approval workflow: submitForApproval (changes status from Draft to PendingApproval), approvePurchaseRequisition (changes status to Approved and records approver details), and rejectPurchaseRequisition (changes status to Rejected and records rejection reason)",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Create React Query hooks in useQueries.ts for purchase requisition operations: useGetPurchaseRequisitions (with status filter), useCreatePurchaseRequisition, useUpdatePurchaseRequisition, useDeletePurchaseRequisition, useSubmitForApproval, useApprovePurchaseRequisition, and useRejectPurchaseRequisition with appropriate success/error toast notifications",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useQueries.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useQueries.ts"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Create a CreatePurchaseRequisitionForm component using React Hook Form with fields for department, items (with dynamic add/remove rows for item description, quantity, and estimated cost), justification textarea, and auto-calculated total estimated cost. Include validation for required fields and numeric inputs",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/CreatePurchaseRequisitionForm.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/CreatePurchaseRequisitionForm.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Create a PurchaseRequisitionTable component that displays purchase requisitions filtered by status (Draft, PendingApproval, Approved, Rejected) with columns for ID, requested by, department, total estimated cost, status badge, created date, and action buttons (Edit for Draft status, View Details for all statuses, Delete for Draft status)",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/PurchaseRequisitionTable.tsx",
+          "frontend/src/components/EditPurchaseRequisitionForm.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/PurchaseRequisitionTable.tsx",
+          "frontend/src/components/EditPurchaseRequisitionForm.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Create a PurchaseRequisitionApproval component that displays the full requisition details with line items breakdown, shows approval history timeline, and includes action buttons for Submit for Approval (Draft status only), Approve with optional comments (PendingApproval status only), and Reject with required reason (PendingApproval status only)",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/PurchaseRequisitionApproval.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/PurchaseRequisitionApproval.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Create a PurchaseRequisitions page component at route /purchase-requisitions that combines the PurchaseRequisitionTable with a dialog-based CreatePurchaseRequisitionForm, following the pattern of the VendorManagement page",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/PurchaseRequisitions.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/PurchaseRequisitions.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Add a Purchase Requisitions navigation link to the Navigation component with a FileText icon, positioned between Vendors and Quotation Requests",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Navigation.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Navigation.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/CreatePurchaseRequisitionForm.tsx",
+    "frontend/src/components/EditPurchaseRequisitionForm.tsx",
+    "frontend/src/components/Navigation.tsx",
+    "frontend/src/components/PurchaseRequisitionApproval.tsx",
+    "frontend/src/components/PurchaseRequisitionTable.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/PurchaseRequisitionDetail.tsx",
+    "frontend/src/pages/PurchaseRequisitions.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}
